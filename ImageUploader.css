@@ -1,0 +1,13 @@
+/* customComponent.css */
+.custom-fixed-height {
+    height: 350px; /* Set the desired fixed height for the component */
+  } 
+  /* customComponent.css */ 
+  .custom-fixed-height .slds-border_left {
+    height: calc(80% - 40px); /* Set the height to fit within the fixed container minus padding */
+  }
+  /* customComponent.css */
+  .custom-button-padding {
+    padding: 17px;
+  }
+  
