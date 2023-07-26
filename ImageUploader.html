@@ -1,7 +1,7 @@
 <template> 
   
   <lightning-card title="Profile Picture" icon-name="utility:image">
-    <template if:true={data}>
+    <template if:true={isDelete}>
     <div slot="actions">
       
         <lightning-button  label="Remove Picture" onclick={handleRemovePicture} variant="destructive" class="custom-button-padding"></lightning-button>
@@ -11,23 +11,25 @@
     <!-- Rest of the card content -->
   
 
-    <div class="slds-box custom-container slds-grid slds-gutters custom-fixed-height">
+    <div class="slds-box custom-container slds-grid  custom-fixed-height">
       <!-- Div 1 -->
       <template if:true={showDiv1}>
         <div class="slds-col slds-size_3-of-3">
           <lightning-card >
-            <div> 
+            <div style="text-align:center"> 
               <lightning-input label="" accept="image/png,image/jpeg" name="file uploader" onchange={handleFilesChange} type="file">
               </lightning-input>
             </div>
             <br />
-            <div class="slds-text-body_small slds-text-color_error">{fileName}
+            <template if:true={isFile}>
+            <div class="slds-text-body_small slds-text-color_error" style="text-align: center;">{fileName}
               <template if:true={showLoadingSpinner}>
                 <lightning-spinner alternative-text="Uploading......" size="medium"></lightning-spinner>
               </template>
             </div>
+          </template>
             <br />
-            <div>
+            <div style="text-align: center;">
               <template if:false={data}>
                 <lightning-button class="slds-m-top--medium" label="Upload Image" onclick={handleSave}
                   variant="brand" disabled={isTrue}></lightning-button>
@@ -45,7 +47,7 @@
       <!-- Div 2 -->
       <template if:true={showDiv2}>
         <div class="slds-col slds-size_3-of-3">
-            <div class="slds-border_left slds-border_right slds-border_bottom" style="height: 100%; padding: 5px;">
+            <div class="slds-border_left slds-border_right slds-border_bottom" style="height: 100%; padding: 5px;border: none !important;">
               <template if:false={data}>
                 <i class="slds-text-color_error">No image uploaded!</i>
               </template>
